@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button *ngIf="!isLoggedIn()" [routerLink]="'/login'"> Login </a>
+      <a mat-button *ngIf="isLoggedIn()" [routerLink]="'/main'"> Main </a>
+      <a mat-button *ngIf="isLoggedIn() && isAdmin()" [routerLink]="'/compositions'"> Compositions </a>
+      <a mat-button *ngIf="isLoggedIn() && isAdmin()" [routerLink]="'/requests'"> Requests </a>
+      <a mat-button *ngIf="isLoggedIn() && !isAdmin()" [routerLink]="'/request-add'"> Add request </a>
+      <a mat-button *ngIf="isLoggedIn()" (click)="logout()" k> Logout </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

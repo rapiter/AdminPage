@@ -1,0 +1,53 @@
+<div fxLayout="column"
+     fxFill
+     fxLayoutGap="10px">
+  <div fxLayout="row" fxLayoutAlign="center top">
+    <mat-card fxFlex="33">
+      <form [formGroup]="compositionForm" (ngSubmit)="add()">
+        <div fxLayout="column">
+          <div>
+          <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+          </div>
+
+          <div>
+          <mat-form-field>
+            <input matInput placeholder="year" formControlName="year">
+          </mat-form-field>
+          </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="duration" formControlName="duration">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="comment" formControlName="comment">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="url" formControlName="url">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="pictureURL" formControlName="pictureURL">
+          </mat-form-field>
+        </div>
+          <div fxLayoutAlign="end center">
+            <button mat-raised-button routerLink="/compositions"> Back </button>
+            <button mat-raised-button color="primary" type="submit"> Save </button>
+          </div>
+
+        </div>
+
+      </form>
+    </mat-card>
+  </div>
+
+
+</div>

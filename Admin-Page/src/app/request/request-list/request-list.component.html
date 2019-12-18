@@ -1,0 +1,10 @@
+<mat-card>
+  <h2>Requests</h2>
+  <div fxLayoutAlign="end center">
+  </div>
+  <mat-nav-list>
+    <a mat-list-item routerLink="/request/{{request.id}}" *ngFor="let request of requests"> {{ request.requestHeader }}</a>
+  </mat-nav-list>
+</mat-card>
+
+
