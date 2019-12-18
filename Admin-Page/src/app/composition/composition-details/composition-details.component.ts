@@ -4,6 +4,8 @@ import {Composition} from '../../models/composition';
 import {AuthenticationService} from '../../services/authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CompositionService} from '../../services/composition.service';
+import {Style} from '../../models/style';
+import {StyleService} from '../../services/style.service';
 
 @Component({
   selector: 'app-composition-details',
@@ -14,20 +16,21 @@ export class CompositionDetailsComponent implements OnInit {
   compositionForm = new FormGroup({
     name: new FormControl(''),
     year: new FormControl(''),
+    style: new FormControl(''),
     duration: new FormControl(''),
     comment: new FormControl(''),
     url: new FormControl(''),
     pictureURL: new FormControl('')
   });
   composition: Composition;
+  styles: Style[];
 
   private id: number;
 
 
   constructor(private route: ActivatedRoute,
               private compositionService: CompositionService,
-              private router: Router, private authService: AuthenticationService) {
-
+              private router: Router, private authService: AuthenticationService, private styleService: StyleService) {
     this.id = +this.route.snapshot.paramMap.get('id');
     this.compositionService.getComposition(this.id)
       .subscribe(compositionFromRest => {
@@ -44,12 +47,18 @@ export class CompositionDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getComposition();
+    this.getStyles();
   }
 
   getComposition(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.compositionService.getComposition(id)
       .subscribe(comp => this.composition = comp);
+  }
+
+  getStyles(): void {
+    this.styleService.getStyles()
+      .subscribe(styles => this.styles = styles);
   }
 
   save() {
