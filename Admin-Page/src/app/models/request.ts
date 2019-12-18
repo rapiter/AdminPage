@@ -2,7 +2,7 @@ import {User} from './user';
 
 export class Request {
   id: number;
-  user: User;
+  userId: number;
   requestHeader: string;
   requestBody: string;
 }

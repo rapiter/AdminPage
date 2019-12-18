@@ -27,6 +27,7 @@ import { MainComponent } from './main/main.component';
 import { RequestAddComponent } from './request/request-add/request-add.component';
 import { RequestDetailsComponent } from './request/request-details/request-details.component';
 import { RequestListComponent } from './request/request-list/request-list.component';
+import {MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { RequestListComponent } from './request/request-list/request-list.compon
     BrowserAnimationsModule,
     MatMenuModule,
     MatIconModule,
+    MatInputModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
