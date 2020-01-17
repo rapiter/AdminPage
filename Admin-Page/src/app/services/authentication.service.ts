@@ -13,13 +13,16 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(environment.baseUrl + 'authentication', { username, password })
+    return this.http.post<any>(environment.baseUrl + 'authentication',
+      { username, password })
       .pipe(map(response => {
         // login successful if there's a jwt token in the response
         if (response.token) {
-          // store username and jwt token in local storage to keep user logged in between page refreshes
+          // store username and jwt token in local storage
+          // to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(
-            { name: response.name, token: response.token , isAdmin: response.isAdmin, id: response.id}));
+            { name: response.name, token: response.token,
+              isAdmin: response.isAdmin, id: response.id}));
           // return true to indicate successful login
           return true;
         } else {
